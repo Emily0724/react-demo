@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    
+    <div id="root"></div>
+    <script type="text/babel">
+
+        console.log("一般的scrip")
+
+        function MyApp() {
+            // jsx使用變數
+            // 建立變數
+            const dogName = "健仔";
+            const myClassName="myClass";
+            function btnClick(){
+                console.log("按鈕1")
+            }
+            const dogAge=5;
+            const dogClassName=()=>{
+                if(dogAge>10){
+                    return"old"
+                    
+                }
+            }
+
+            // 宣告style物件
+            const dogStyle={
+                color:"red",
+                fontSize:"64px"
+            }
+            return(
+                <>
+                    {/*使用變數*/}
+                    <div>毛孩的名稱1：{dogName}</div>
+                    <div className={myClassName}>毛孩的名稱2：{dogName}</div>
+                    {/*事件綁定 */}
+                    <button onClick={btnClick}>按鈕1</button>
+                    <button onClick={()=>{
+                        console.log("按鈕2")
+                    }}>按鈕2</button>
+
+                    <div className={dogClassName()}>
+                        {dogName}今年{dogAge}歲
+                        </div>
+
+                        <div className={dogAge>10?"old":"young"}>
+                        {dogName}今年{dogAge}歲,
+                        {dogAge>10?"有點年紀":"還年輕"}
+                        </div>
+
+                        <div className={dogClassName()} style={dogStyle}>
+                        {dogName}今年{dogAge}歲
+                        </div>
+
+                        <div className={dogClassName()} style={{
+                            color:"blue",
+                            frontSize:"100px"
+                        }}>
+                        {dogName}今年{dogAge}歲
+                        </div>
+                </>
+            )
+
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<MyApp />);
+    </script>
+</body>
+
+</html>

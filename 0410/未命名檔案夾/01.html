@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <script>
+
+    </script>
+
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+        function MyApp() {
+            const[name,setName]=useState('');
+            
+            function changeText(e) {
+                setName(e.target.value);
+                
+            }
+            return (
+                <div>
+                    <h1>文字方塊內容:{name}</h1>
+                    <input type="text" value={name} onChange={changeText}  />
+                    <button>清空</button>
+                    
+                    
+
+                </div>
+            )
+        }
+
+
+
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<MyApp />);
+    </script>
+</body>
+
+</html>
